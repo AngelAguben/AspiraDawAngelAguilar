@@ -30,9 +30,11 @@ public class Aspiradora {
         final double restaCarga = 1.5; // carga por m2
         // Variables de calculo
         double cargaCoc = 0, cargaSal = 0, cargaBan = 0, cargaHab1 = 0, cargaHab2 = 0;
+        boolean tieneCarga = true;
 
         // Variables de nombre
-        final String COCINA = "cocina", SALON = "salón", BANIO = "banio", HAB1 = "habitación 1", HAB2 = "habitación 2";
+        final String COCINA = "cocina", SALON = "salón", BANIO = "banio", 
+                HAB1 = "habitación 1", HAB2 = "habitación 2";
 
         /* CONFIGURAR EL SISTEMA
         La vivienda tiene 1 cocina, 1 salón, 1 cuarto de baño y 2 dormitorios
@@ -115,67 +117,102 @@ public class Aspiradora {
                     }
                     break;
                 case 2: // Modo Dependencias
-                    JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo dependencias");
-                    limpiar = JOptionPane.showInputDialog("Elija las dependencias que desea limpiar: \n"
-                            + "1 - Cocina \n"
-                            + "2 - Salón \n"
-                            + "3 - Banio \n"
-                            + "4 - Habitación 1 \n"
-                            + "5 - Habitación 2 \n"
-                            + "6 - Salir \n");
-                    limp = Integer.parseInt(limpiar);
-                    switch (limp) {
-                        case 1: // Cocina
-                            JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo dependencias");
-                            // Se actualiza la variable de dependenciaLimpia con el 
-                            // valor de COCINA
-                            dependenciaLimpiada = COCINA;
-                            // Se actualiza la variable carga con el valor de lo 
-                            // que tenia menos lo que se resta
-                            carga -= cargaCoc;
-                            break;
-                        case 2: // Salón
-                            JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo dependencias");
-                            // Se actualiza la variable de dependenciaLimpia con el 
-                            // valor de SALON
-                            dependenciaLimpiada = SALON;
-                            // Se actualiza la variable carga con el valor de lo 
-                            // que tenia menos lo que se resta
-                            carga -= cargaSal;
-                            break;
-                        case 3: // Banio
-                            JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo dependencias");
-                            // Se actualiza la variable de dependenciaLimpia con el 
-                            // valor de BANIO
-                            dependenciaLimpiada = BANIO;
-                            // Se actualiza la variable carga con el valor de lo 
-                            // que tenia menos lo que se resta
-                            carga -= cargaBan;
-                            break;
-                        case 4: // Habitación 1
-                            JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo dependencias");
-                            // Se actualiza la variable de dependenciaLimpia con el 
-                            // valor de HAB1
-                            dependenciaLimpiada = HAB1;
-                            // Se actualiza la variable carga con el valor de lo 
-                            // que tenia menos lo que se resta
-                            carga -= cargaHab1;
-                            break;
-                        case 5: // HAB2
-                            JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo dependencias");
-                            // Se actualiza la variable de dependenciaLimpia con el 
-                            // valor de HAB2
-                            dependenciaLimpiada = HAB2;
-                            // Se actualiza la variable carga con el valor de lo 
-                            // que tenia menos lo que se resta
-                            carga -= cargaHab2;
-                            break;
-                        case 6: // Salir
-                            JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo dependencias");
-                            break;
-                    }
-                    JOptionPane.showMessageDialog(null, "Se ha limpiado la dependencia: " + dependenciaLimpiada);
-                    break;
+                    JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
+                            + "dependencias");
+                    do {
+                        limpiar = JOptionPane.showInputDialog("Elija las dependencias "
+                                + "que desea limpiar: \n"
+                                + "1 - Cocina \n"
+                                + "2 - Salón \n"
+                                + "3 - Banio \n"
+                                + "4 - Habitación 1 \n"
+                                + "5 - Habitación 2 \n"
+                                + "6 - Salir \n");
+                        limp = Integer.parseInt(limpiar);
+
+                        switch (limp) {
+                            case 1: // Cocina
+                                if(carga>(cargaCoc+MINCARGA)){
+                                // Se actualiza la variable de dependenciaLimpia con el 
+                                // valor de COCINA
+                                dependenciaLimpiada = COCINA;
+                                // Se actualiza la variable carga con el valor de lo 
+                                // que tenia menos lo que se resta
+                                carga -= cargaCoc;
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "La batería "
+                                            + "no es suficiente");
+                                    tieneCarga = false; // Variable de tieneCarga es false
+                                }
+                                break;
+                            case 2: // Salón
+                                if(carga>(cargaCoc+MINCARGA)){
+                                // Se actualiza la variable de dependenciaLimpia con el 
+                                // valor de SALON
+                                dependenciaLimpiada = SALON;
+                                // Se actualiza la variable carga con el valor de lo 
+                                // que tenia menos lo que se resta
+                                carga -= cargaSal;
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "La batería "
+                                            + "no es suficiente");
+                                    tieneCarga = false;
+                                }
+                                break;
+                            case 3: // Banio
+                            if(carga>(cargaCoc+MINCARGA)){
+                                // Se actualiza la variable de dependenciaLimpia con el 
+                                // valor de BANIO
+                                dependenciaLimpiada = BANIO;
+                                // Se actualiza la variable carga con el valor de lo 
+                                // que tenia menos lo que se resta
+                                carga -= cargaBan;
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "La batería "
+                                            + "no es suficiente");
+                                    tieneCarga = false;
+                                }
+                                break;
+                            case 4: // Habitación 1
+                            if(carga>(cargaCoc+MINCARGA)){
+                                // Se actualiza la variable de dependenciaLimpia con el 
+                                // valor de HAB1
+                                dependenciaLimpiada = HAB1;
+                                // Se actualiza la variable carga con el valor de lo 
+                                // que tenia menos lo que se resta
+                                carga -= cargaHab1;
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "La batería "
+                                            + "no es suficiente");
+                                    tieneCarga = false;
+                                }
+                                break;
+                            case 5: // HAB2
+                            if(carga>(cargaCoc+MINCARGA)){
+                                // Se actualiza la variable de dependenciaLimpia con el 
+                                // valor de HAB2
+                                dependenciaLimpiada = HAB2;
+                                // Se actualiza la variable carga con el valor de lo 
+                                // que tenia menos lo que se resta
+                                carga -= cargaHab2;
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "La batería "
+                                            + "no es suficiente");
+                                    tieneCarga = false;
+                                }
+                                break;
+                            case 6: // Salir
+                                JOptionPane.showMessageDialog(null, "Usted ha "
+                                        + "salido del programa");
+                                break;
+                        }
+                        if(limp !=6 && tieneCarga==true){
+                        JOptionPane.showMessageDialog(null, "Limpiando...");
+                        JOptionPane.showMessageDialog(null, "Se ha limpiado la "
+                                + "dependencia: " + dependenciaLimpiada);
+                        }
+                        // Repite mientas limp no sea 6 y carga no sea inferior a 3
+                    } while (limp != 6); 
             }
         }
     }
