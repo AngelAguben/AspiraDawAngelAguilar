@@ -21,11 +21,11 @@ public class Aspiradora {
         // Variable de dependencias totales y de minima carga
         final int TOTALDEPENDEN = 5, MINCARGA = 3;
         // Variables necesarias
-        String porcentajeCarga, aspiracion, limpiar, dependenciaLimpiada = "";
+        String porcentajeCarga, aspiracion, limpiar, dependenciaLimpiada = "", listadoDepen ="";
         // Variables de las dependencias en numero
         double mCoc = 0, mSal = 0, mBan = 0, mHab1 = 0, mHab2 = 0;
         // Variables de las necesarias en numero
-        int carga = 0, modAspi, limp;
+        int carga = 0, modAspi = 0, limp = 0;
         // Variable de carga
         final double restaCarga = 1.5; // carga por m2
         // Variables de calculo
@@ -61,21 +61,24 @@ public class Aspiradora {
             dependencia[i] = JOptionPane.showInputDialog("Introduzca el nombre de la "
                     + "dependencia " + (i + 1));
         }
-        do {
+        // Array para los metros cuadrados de las dependencias
         for (int i = 0; i < numDepen; i++) {
+        do {
+        
             textoMetros = JOptionPane.showInputDialog("Introduzca los metros "
-                    + "cuadrados de la dependencia " + (i + 1));
+                    + "cuadrados de la dependencia " + dependencia[i]);
             metros[i] = Integer.parseInt(textoMetros);
-            System.out.println(metros[2]);
+        
+        } while (metros[i]<0 && metros[i]>100);
         }
         // Cambiar
-        } while (mSal <= 1 || mSal >= 100);
+        //} while (mSal <= 1 || mSal >= 100);
 
         
         
         
         
-        // ghjkfghjkfghjkfjhg
+        /*
         do{
             metcoc = JOptionPane.showInputDialog("Metros cuadrados de la " + COCINA);
             mCoc = Double.parseDouble(metcoc);
@@ -104,13 +107,15 @@ public class Aspiradora {
             cargaHab2 = restaCarga * mHab2;
 
         } while (mHab2 <= 1 || mHab2 >= 100);
-
+        */
+        
         // CARGA
         // Establece el nivel de batería. (entre 0% y 100%).
         do {
             porcentajeCarga = JOptionPane.showInputDialog("Carga de la aspiradora (0-100) ");
             carga = Integer.parseInt(porcentajeCarga);
         } while (carga < 0 || carga > 100);
+        
 
         /* ASPIRACIÓN
         
@@ -130,6 +135,9 @@ public class Aspiradora {
         batería. Cada vez que se limpia una habitación se actualiza el estado 
         de la batería, para controlar si puede limpiar la siguiente habitación
          */
+        
+        //switch(){
+        //case 1:
         aspiracion = JOptionPane.showInputDialog("Elija un modo de aspiración: \n"
                 + "1 - Modo Completo \n"
                 + "2 - Modo Dependencias \n");
@@ -156,15 +164,19 @@ public class Aspiradora {
                     JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
                             + "dependencias");
                     do {
-                        limpiar = JOptionPane.showInputDialog("Elija las dependencias "
-                                + "que desea limpiar: \n"
-                                + "1 - Cocina \n"
-                                + "2 - Salón \n"
-                                + "3 - Banio \n"
-                                + "4 - Habitación 1 \n"
-                                + "5 - Habitación 2 \n"
-                                + "6 - Salir \n");
+                        do{
+                        for (int i = 0; i < numDepen; i++){
+                            listadoDepen = (i+1)+ " - " + dependencia[i];
+                           
+                        }
+                            limpiar = JOptionPane.showInputDialog("Elija las dependencias "
+                                + "que desea limpiar: \n"+ listadoDepen);
                         limp = Integer.parseInt(limpiar);
+                        } while (limp > dependencia.length);
+                        
+                        
+                        
+                        
 
                         switch (limp) {
                             case 1: // Cocina
@@ -182,7 +194,7 @@ public class Aspiradora {
                                 }
                                 break;
                             case 2: // Salón
-                                if (carga > (cargaCoc + MINCARGA)) {
+                                if (carga > (cargaSal + MINCARGA)) {
                                     // Se actualiza la variable de dependenciaLimpia con el 
                                     // valor de SALON
                                     dependenciaLimpiada = SALON;
@@ -196,7 +208,7 @@ public class Aspiradora {
                                 }
                                 break;
                             case 3: // Banio
-                                if (carga > (cargaCoc + MINCARGA)) {
+                                if (carga > (cargaBan + MINCARGA)) {
                                     // Se actualiza la variable de dependenciaLimpia con el 
                                     // valor de BANIO
                                     dependenciaLimpiada = BANIO;
@@ -210,7 +222,7 @@ public class Aspiradora {
                                 }
                                 break;
                             case 4: // Habitación 1
-                                if (carga > (cargaCoc + MINCARGA)) {
+                                if (carga > (cargaHab1 + MINCARGA)) {
                                     // Se actualiza la variable de dependenciaLimpia con el 
                                     // valor de HAB1
                                     dependenciaLimpiada = HAB1;
@@ -224,7 +236,7 @@ public class Aspiradora {
                                 }
                                 break;
                             case 5: // HAB2
-                                if (carga > (cargaCoc + MINCARGA)) {
+                                if (carga > (cargaHab2 + MINCARGA)) {
                                     // Se actualiza la variable de dependenciaLimpia con el 
                                     // valor de HAB2
                                     dependenciaLimpiada = HAB2;
@@ -237,7 +249,7 @@ public class Aspiradora {
                                     tieneCarga = false;
                                 }
                                 break;
-                            case 6: // Salir
+                            default: // Salir
                                 JOptionPane.showMessageDialog(null, "Usted ha "
                                         + "salido del programa");
                                 break;
@@ -247,9 +259,10 @@ public class Aspiradora {
                             JOptionPane.showMessageDialog(null, "Se ha limpiado la "
                                     + "dependencia: " + dependenciaLimpiada);
                         }
-                        // Repite mientas limp no sea 6 y carga no sea inferior a 3
+                        // Repite mientas limp no sea 6
                     } while (limp != 6);
             }
         }
     }
 }
+//}
