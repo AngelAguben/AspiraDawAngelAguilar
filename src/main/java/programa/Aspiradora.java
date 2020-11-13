@@ -21,11 +21,12 @@ public class Aspiradora {
         // Variable de dependencias totales y de minima carga
         final int TOTALDEPENDEN = 5, MINCARGA = 3;
         // Variables necesarias
-        String porcentajeCarga, aspiracion, limpiar, dependenciaLimpiada = "", listadoDepen ="";
+        String porcentajeCarga, aspiracion, limpiar, dependenciaLimpiada = "",
+                listadoDepen = "", fregado = "", menu = "";
         // Variables de las dependencias en numero
         double mCoc = 0, mSal = 0, mBan = 0, mHab1 = 0, mHab2 = 0;
         // Variables de las necesarias en numero
-        int carga = 0, modAspi = 0, limp = 0;
+        int menuNum = 0, carga = 0, modAspi = 0, limp = 0, modFreg = 0;
         // Variable de carga
         final double restaCarga = 1.5; // carga por m2
         // Variables de calculo
@@ -53,8 +54,8 @@ public class Aspiradora {
 
         } while (numDepen < 0 || numDepen > 10); // Valor entre 1 y 10
         // Variable de nombre con array
-        String[] dependencia = new String[numDepen]; // COCINA
-        int[] metros = new int[numDepen]; // COCINA METROS
+        String[] dependencia = new String[numDepen]; // 
+        int[] metros = new int[numDepen]; // METROS
 
         // Número de dependencias de la casa
         for (int i = 0; i < numDepen; i++) {
@@ -63,21 +64,17 @@ public class Aspiradora {
         }
         // Array para los metros cuadrados de las dependencias
         for (int i = 0; i < numDepen; i++) {
-        do {
-        
-            textoMetros = JOptionPane.showInputDialog("Introduzca los metros "
-                    + "cuadrados de la dependencia " + dependencia[i]);
-            metros[i] = Integer.parseInt(textoMetros);
-        
-        } while (metros[i]<0 && metros[i]>100);
+            do {
+
+                textoMetros = JOptionPane.showInputDialog("Introduzca los metros "
+                        + "cuadrados de la dependencia " + dependencia[i]);
+                metros[i] = Integer.parseInt(textoMetros);
+
+            } while (metros[i] < 0 && metros[i] > 100);
         }
         // Cambiar
         //} while (mSal <= 1 || mSal >= 100);
 
-        
-        
-        
-        
         /*
         do{
             metcoc = JOptionPane.showInputDialog("Metros cuadrados de la " + COCINA);
@@ -107,15 +104,14 @@ public class Aspiradora {
             cargaHab2 = restaCarga * mHab2;
 
         } while (mHab2 <= 1 || mHab2 >= 100);
-        */
-        
+         */
         // CARGA
         // Establece el nivel de batería. (entre 0% y 100%).
         do {
             porcentajeCarga = JOptionPane.showInputDialog("Carga de la aspiradora (0-100) ");
             carga = Integer.parseInt(porcentajeCarga);
         } while (carga < 0 || carga > 100);
-        
+
 
         /* ASPIRACIÓN
         
@@ -135,18 +131,27 @@ public class Aspiradora {
         batería. Cada vez que se limpia una habitación se actualiza el estado 
         de la batería, para controlar si puede limpiar la siguiente habitación
          */
-        
-        //switch(){
-        //case 1:
-        aspiracion = JOptionPane.showInputDialog("Elija un modo de aspiración: \n"
-                + "1 - Modo Completo \n"
-                + "2 - Modo Dependencias \n");
-        modAspi = Integer.parseInt(aspiracion);
+        menu = JOptionPane.showInputDialog("Elija un modo de fregado: \n"
+                + "1 - Aspiración \n"
+                + "2 - Aspiración y fregado \n"
+                + "3 - Estado general\n"
+                + "4 - Base de carga \n"
+                + "5 - Salir \n");
+
+        menuNum = Integer.parseInt(menu);
         if (carga < MINCARGA) {
             JOptionPane.showMessageDialog(null, "Falta de batría \n"
                     + "Aspiradora regrensando a su base... ");
 
         } else {
+
+            switch (menuNum) {
+                case 1: // Aspiración
+                    aspiracion = JOptionPane.showInputDialog("Elija un modo de aspiración: \n"
+                + "1 - Modo Completo \n"
+                + "2 - Modo Dependencias \n");
+        modAspi = Integer.parseInt(aspiracion);
+        
             switch (modAspi) {
                 case 1: // Modo Completo
                     JOptionPane.showMessageDialog(null, "Usted ha elegido el modo completo");
@@ -262,7 +267,20 @@ public class Aspiradora {
                         // Repite mientas limp no sea 6
                     } while (limp != 6);
             }
+
+                case 2: // Aspiración y fregado
+                    fregado = JOptionPane.showInputDialog("Elija un modo de fregado: \n"
+                            + "1 - Modo Completo \n"
+                            + "2 - Modo Dependencias \n");
+                    modFreg = Integer.parseInt(fregado);
+                    switch (modFreg) {
+                        case 1: // Modo Completo
+
+                        case 2: // Modo Dependencias
+
+                    }
+
+            }
         }
     }
 }
-//}
