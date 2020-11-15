@@ -177,6 +177,7 @@ public class Aspiradora {
                             + "dependencias");
                     do {
                         do{
+                            // Implementamos el array de texto
                             limpiar = JOptionPane.showInputDialog("Elija las dependencias "
                                 + "que desea limpiar: \n"
                             + "1 - " + dependencia[0] + " \n" // Cocina
