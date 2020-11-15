@@ -176,17 +176,18 @@ public class Aspiradora {
                     JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
                             + "dependencias");
                     do {
-                        /*do{
-                        for (int i = 0; i < numDepen; i++){
-                            listadoDepen = (i+1)+ " - " + dependencia[i];
-                           
-                        }
+                        do{
                             limpiar = JOptionPane.showInputDialog("Elija las dependencias "
-                                + "que desea limpiar: \n"+ listadoDepen);
+                                + "que desea limpiar: \n"
+                            + "1 - " + dependencia[0] + " \n" // Cocina
+                            + "2 - " + dependencia[1] + " \n"// Salon
+                            + "3 - " + dependencia[2] + " \n"// Banio
+                            + "4 - " + dependencia[3] + " \n"// Hab1
+                            + "5 - " + dependencia[4]); // Hab 2
                         limp = Integer.parseInt(limpiar);
                         } while (limp > dependencia.length);
                         
-                        */
+                        
                         
                         
 
