@@ -38,9 +38,10 @@ public class Aspiradora {
                 HAB1 = "habitación 1", HAB2 = "habitación 2";
 
         // Variables para los arrays
-        int numDepen = 0, metrosCuadrados = 0;
+        int numDepen = 5;
+        
         String numeroDepen = "", textoMetros = "";
-
+        
 
         /* CONFIGURAR EL SISTEMA
         La vivienda tiene 1 cocina, 1 salón, 1 cuarto de baño y 2 dormitorios
@@ -48,20 +49,25 @@ public class Aspiradora {
          */
         // RESOLUCIÓN EL PROGRAMA
         // Introduzción de datos
-        do {
+        /*do {
             numeroDepen = JOptionPane.showInputDialog("¿Cuántas dependencias tiene?");
             numDepen = Integer.parseInt(numeroDepen);
 
         } while (numDepen < 0 || numDepen > 10); // Valor entre 1 y 10
         // Variable de nombre con array
-        String[] dependencia = new String[numDepen]; // 
+        */
+        String[] dependencia = {"cocina","salon","banio","habitación 1","habitacion 2"};
+        
+        
         int[] metros = new int[numDepen]; // METROS
-
+        
         // Número de dependencias de la casa
+        /*
         for (int i = 0; i < numDepen; i++) {
             dependencia[i] = JOptionPane.showInputDialog("Introduzca el nombre de la "
                     + "dependencia " + (i + 1));
         }
+        */
         // Array para los metros cuadrados de las dependencias
         for (int i = 0; i < numDepen; i++) {
             do {
@@ -72,6 +78,7 @@ public class Aspiradora {
 
             } while (metros[i] < 0 && metros[i] > 100);
         }
+        
         // Cambiar
         //} while (mSal <= 1 || mSal >= 100);
 
@@ -169,7 +176,7 @@ public class Aspiradora {
                     JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
                             + "dependencias");
                     do {
-                        do{
+                        /*do{
                         for (int i = 0; i < numDepen; i++){
                             listadoDepen = (i+1)+ " - " + dependencia[i];
                            
@@ -179,7 +186,7 @@ public class Aspiradora {
                         limp = Integer.parseInt(limpiar);
                         } while (limp > dependencia.length);
                         
-                        
+                        */
                         
                         
 
