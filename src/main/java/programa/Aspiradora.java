@@ -21,14 +21,14 @@ public class Aspiradora {
         // Variable de dependencias totales y de minima carga
         final int TOTALDEPENDEN = 4, MINCARGA = 3;
         // Variables necesarias
-        String porcentajeCarga, aspiracion, limpiar, dependenciaLimpiada = "",
-                listadoDepen = "", fregado = "", menu = "";
+        String porcentajeCarga, aspiracion, limpiar, fregar, dependenciaLimpiada = "", 
+                fregado = "", menu = "";
         // Variables de las dependencias en numero
         double carga = 0;
         // Variables de las necesarias en numero
-        int menuNum = 0, modAspi = 0, limp = 0, modFreg = 0;
+        int menuNum = 0, modAspi = 0, limp = 0, modFreg = 0, freg = 0;
         // Variables de resta carga
-        final double RESTACARGALIMP = 1.5; // carga por m2
+        final double RESTACARGALIMP = 1.5, RESTACARGAFREG = 2.25; // carga por m2
         // Variables de calculo
         boolean tieneCarga = true;
 
@@ -158,7 +158,7 @@ public class Aspiradora {
                     modAspi = Integer.parseInt(aspiracion);
 
                     switch (modAspi) {
-                        case 1: // Modo Completo
+                        case 1: // Modo Completo de limpiar
                             JOptionPane.showMessageDialog(null, "Usted ha elegido el modo completo");
                             for (int i = 0; i < TOTALDEPENDEN; i++) {
                                 /*if (carga < MINCARGA) {
@@ -170,7 +170,7 @@ public class Aspiradora {
                                 //}
                             }
                             break;
-                        case 2: // Modo Dependencias
+                        case 2: // Modo Dependencias de limpiar
                             JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
                                     + "dependencias");
                             do {
@@ -178,7 +178,7 @@ public class Aspiradora {
                                     // Implementamos el array de texto
                                     limpiar = JOptionPane.showInputDialog("Elija las dependencias "
                                             + "que desea limpiar: \n"
-                                            + carga + " \n"
+                                            + "Batería = " + carga + " \n"
                                             + "1 - " + dependencia[0] + " \n"// Cocina
                                             + "2 - " + dependencia[1] + " \n"// Salon
                                             + "3 - " + dependencia[2] + " \n"// Banio
@@ -263,7 +263,6 @@ public class Aspiradora {
                                     case 6: // Salir
                                         JOptionPane.showMessageDialog(null, "Usted ha "
                                                 + "salido del programa");
-                                        limp = 6;
                                         break;
                                 }
                                 if (limp != 6 && tieneCarga == true) {
@@ -284,11 +283,113 @@ public class Aspiradora {
                     switch (modFreg) {
                         case 1: // Modo Completo
 
-                        case 2: // Modo Dependencias
+                        case 2: // Modo Dependencias de fregado
+                            JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
+                                    + "dependencias");
+                            do {
+                                do {
+                                    // Implementamos el array de texto
+                                    fregar = JOptionPane.showInputDialog("Elija las dependencias "
+                                            + "que desea aspirar y fregar: \n"
+                                            + "Batería = " + carga + " \n"
+                                            + "1 - " + dependencia[0] + " \n"// Cocina
+                                            + "2 - " + dependencia[1] + " \n"// Salon
+                                            + "3 - " + dependencia[2] + " \n"// Banio
+                                            + "4 - " + dependencia[3] + " \n"// Hab1
+                                            + "5 - " + dependencia[4] + " \n"// Hab 2
+                                            + "6 - Salir"); // Salir
+                                    freg = Integer.parseInt(fregar);
+                                } while (freg > 6);
+
+                                // Opción de limpiar
+                                switch (freg) {
+                                    case 1: // Cocina
+                                        if (carga > (metros[0] + MINCARGA)) {
+                                            // Se actualiza la variable de dependenciaLimpia con el 
+                                            // valor de COCINA
+                                            dependenciaLimpiada = COCINA;
+                                            // Se actualiza la variable carga con el valor de lo 
+                                            // que tenia menos lo que se resta
+                                            carga -= RESTACARGAFREG * metros[0];
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "La batería "
+                                                    + "no es suficiente");
+                                            tieneCarga = false; // Variable de tieneCarga es false
+                                        }
+                                        break;
+                                    case 2: // Salón
+                                        if (carga > (metros[1] + MINCARGA)) {
+                                            // Se actualiza la variable de dependenciaLimpia con el 
+                                            // valor de SALON
+                                            dependenciaLimpiada = SALON;
+                                            // Se actualiza la variable carga con el valor de lo 
+                                            // que tenia menos lo que se resta
+                                            carga -= RESTACARGAFREG * metros[1];
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "La batería "
+                                                    + "no es suficiente");
+                                            tieneCarga = false;
+                                        }
+                                        break;
+                                    case 3: // Banio
+                                        if (carga > (metros[2] + MINCARGA)) {
+                                            // Se actualiza la variable de dependenciaLimpia con el 
+                                            // valor de BANIO
+                                            dependenciaLimpiada = BANIO;
+                                            // Se actualiza la variable carga con el valor de lo 
+                                            // que tenia menos lo que se resta
+                                            carga -= RESTACARGAFREG * metros[2];
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "La batería "
+                                                    + "no es suficiente");
+                                            tieneCarga = false;
+                                        }
+                                        break;
+                                    case 4: // Habitación 1
+                                        if (carga > (metros[3] + MINCARGA)) {
+                                            // Se actualiza la variable de dependenciaLimpia con el 
+                                            // valor de HAB1
+                                            dependenciaLimpiada = HAB1;
+                                            // Se actualiza la variable carga con el valor de lo 
+                                            // que tenia menos lo que se resta
+                                            carga -= RESTACARGAFREG * metros[3];
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "La batería "
+                                                    + "no es suficiente");
+                                            tieneCarga = false;
+                                        }
+                                        break;
+                                    case 5: // Habitación 2
+                                        if (carga > (metros[4] + MINCARGA)) {
+                                            // Se actualiza la variable de dependenciaLimpia con el 
+                                            // valor de HAB2
+                                            dependenciaLimpiada = HAB2;
+                                            // Se actualiza la variable carga con el valor de lo 
+                                            // que tenia menos lo que se resta
+                                            carga -= RESTACARGAFREG * metros[4];
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "La batería "
+                                                    + "no es suficiente");
+                                            tieneCarga = false;
+                                        }
+                                        break;
+                                    case 6: // Salir
+                                        JOptionPane.showMessageDialog(null, "Usted ha "
+                                                + "salido del programa");
+                                        break;
+                                }
+                                if (freg != 6 && tieneCarga == true) {
+                                    JOptionPane.showMessageDialog(null, "Limpiando...");
+                                    JOptionPane.showMessageDialog(null, "Se ha limpiado la "
+                                            + "dependencia: " + dependenciaLimpiada);
+                                }
+                                // Repite mientas limp no sea 6
+                            } while (freg != 6);
+                    }
+                    break;
 
                     }
 
             }
         }
     }
-}
