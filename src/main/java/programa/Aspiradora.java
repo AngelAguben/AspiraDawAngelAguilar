@@ -28,7 +28,7 @@ public class Aspiradora {
         // Variables de las necesarias en numero
         int menuNum = 0, modAspi = 0, limp = 0, modFreg = 0;
         // Variable de carga
-        final double restaCarga = 1.5; // carga por m2
+        final double restaCargaLimp = 1.5; // carga por m2
         // Variables de calculo
         double cargaCoc = 0, cargaSal = 0, cargaBan = 0, cargaHab1 = 0, cargaHab2 = 0;
         boolean tieneCarga = true;
@@ -198,7 +198,7 @@ public class Aspiradora {
                                             dependenciaLimpiada = COCINA;
                                             // Se actualiza la variable carga con el valor de lo 
                                             // que tenia menos lo que se resta
-                                            carga -= restaCarga * metros[0];
+                                            carga -= restaCargaLimp * metros[0];
                                         } else {
                                             JOptionPane.showMessageDialog(null, "La batería "
                                                     + "no es suficiente");
@@ -212,7 +212,7 @@ public class Aspiradora {
                                             dependenciaLimpiada = SALON;
                                             // Se actualiza la variable carga con el valor de lo 
                                             // que tenia menos lo que se resta
-                                            carga -= restaCarga * metros[1];
+                                            carga -= restaCargaLimp * metros[1];
                                         } else {
                                             JOptionPane.showMessageDialog(null, "La batería "
                                                     + "no es suficiente");
@@ -226,7 +226,7 @@ public class Aspiradora {
                                             dependenciaLimpiada = BANIO;
                                             // Se actualiza la variable carga con el valor de lo 
                                             // que tenia menos lo que se resta
-                                            carga -= restaCarga * metros[2];
+                                            carga -= restaCargaLimp * metros[2];
                                         } else {
                                             JOptionPane.showMessageDialog(null, "La batería "
                                                     + "no es suficiente");
@@ -240,7 +240,7 @@ public class Aspiradora {
                                             dependenciaLimpiada = HAB1;
                                             // Se actualiza la variable carga con el valor de lo 
                                             // que tenia menos lo que se resta
-                                            carga -= restaCarga * metros[3];
+                                            carga -= restaCargaLimp * metros[3];
                                         } else {
                                             JOptionPane.showMessageDialog(null, "La batería "
                                                     + "no es suficiente");
@@ -254,7 +254,7 @@ public class Aspiradora {
                                             dependenciaLimpiada = HAB2;
                                             // Se actualiza la variable carga con el valor de lo 
                                             // que tenia menos lo que se resta
-                                            carga -= restaCarga * metros[4];
+                                            carga -= restaCargaLimp * metros[4];
                                         } else {
                                             JOptionPane.showMessageDialog(null, "La batería "
                                                     + "no es suficiente");
