@@ -21,7 +21,7 @@ public class Aspiradora {
         // Variable de dependencias totales y de minima carga
         final int TOTALDEPENDEN = 4, MINCARGA = 3;
         // Variables necesarias
-        String porcentajeCarga, aspiracion, limpiar, fregar, dependenciaLimpiada = "", 
+        String porcentajeCarga, aspiracion, limpiar, fregar, dependenciaLimpiada = "",
                 fregado = "", menu = "";
         // Variables de las dependencias en numero
         double carga = 0;
@@ -77,39 +77,6 @@ public class Aspiradora {
             } while (metros[i] < 0 && metros[i] > 100);
         }
 
-        // Cambiar
-        //} while (mSal <= 1 || mSal >= 100);
-
-        /*
-        do{
-            metcoc = JOptionPane.showInputDialog("Metros cuadrados de la " + COCINA);
-            mCoc = Double.parseDouble(metcoc);
-            // La batería que consume la cocina se guardará en cargaCoc
-            cargaCoc = restaCarga * mCoc;
-            //System.out.println(cargaCoc);
-        } while (mCoc <= 1 || mCoc >= 100);
-        do {
-            metsal = JOptionPane.showInputDialog("Metros cuadrados del " + SALON);
-            mSal = Double.parseDouble(metsal);
-            cargaSal = restaCarga * mSal;
-        } while (mSal <= 1 || mSal >= 100);
-        do {
-            metban = JOptionPane.showInputDialog("Metros cuadrados del " + BANIO);
-            mBan = Double.parseDouble(metban);
-            cargaBan = restaCarga * mBan;
-        } while (mBan <= 1 || mBan >= 100);
-        do {
-            methab1 = JOptionPane.showInputDialog("Metros cuadrados de la " + HAB1);
-            mHab1 = Double.parseDouble(methab1);
-            cargaHab1 = restaCarga * mHab1;
-        } while (mHab1 <= 1 || mHab1 >= 100);
-        do {
-            methab2 = JOptionPane.showInputDialog("Metros cuadrados de la  " + HAB2);
-            mHab2 = Double.parseDouble(methab2);
-            cargaHab2 = restaCarga * mHab2;
-
-        } while (mHab2 <= 1 || mHab2 >= 100);
-         */
         // CARGA
         // Establece el nivel de batería. (entre 0% y 100%).
         do {
@@ -387,9 +354,7 @@ public class Aspiradora {
                             } while (freg != 6);
                     }
                     break;
-
-                    }
-
             }
         }
     }
+}
