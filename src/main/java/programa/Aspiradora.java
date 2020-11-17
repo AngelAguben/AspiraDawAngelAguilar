@@ -462,6 +462,15 @@ public class Aspiradora {
 
                         } while (modFreg != 3); // Repite hasta que el usuario escriba un 3
                     case 3: // Muestra el estado general
+                        JOptionPane.showMessageDialog(null, "Fecha: \n"
+                        + "Nivel de batería: " + carga + "%\n"
+                        + "Lugar donde está parado " + "\n"
+                        + "Dependencias y metros de la casa: \n"
+                        + " 1 - " + dependencia[0] + " - " + metros[0] + " metros cuadrados \n"
+                        + " 2 - " + dependencia[1] + " - " + metros[1] + " metros cuadrados \n"
+                        + " 3 - " + dependencia[2] + " - " + metros[2] + " metros cuadrados \n"
+                        + " 4 - " + dependencia[3] + " - " + metros[3] + " metros cuadrados \n"
+                        + " 5 - " + dependencia[4] + " - " + metros[4] + " metros cuadrados");
 
                         break;
                     case 4: // Base de carga
