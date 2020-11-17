@@ -132,26 +132,43 @@ public class Aspiradora {
                             JOptionPane.showMessageDialog(null, "Usted ha elegido el modo completo \n"
                                     + "Batería = " + carga + " \n");
 
+                            // Se ejecutará hasta que i sea mayor al número de dependencias
                             for (int i = 0; i < TOTALDEPENDEN; i++) {
+                                // Si carga es mayor a la posición del array i 
+                                // en metros más la craga mínima que es 3, 
+                                // ejecutará el código de if
                                 if (carga > (metros[i] + MINCARGA)) {
+                                    // Mostrará el siguiente mensaje 
                                     JOptionPane.showMessageDialog(null, "Limpiando "
                                             + "la dependencia " + dependencia[i] + " ...");
-                                    limpiada[i] = true;
+                                    limpiada[i] = true; // Posición de i en el 
+                                    // array limpiada será true
+
+                                    // Actualizará la variable de carga al valor 
+                                    // adecuado, multiplicando los metros de la 
+                                    // posición de i, multiplicandolo por lo que
+                                    // consume cada metro de batería menos la 
+                                    // carga de la variable que tenga carga
                                     carga -= metros[i] * RESTACARGALIMP;
-                                    System.out.println(carga);
+                                    // System.out.println(carga);
                                 } else {
+                                    // De lo contrario, mostrará este mensaje
                                     JOptionPane.showMessageDialog(null, "Falta de "
                                             + "batería para la dependencia " + dependencia[i]);
-                                    limpiada[i] = false;
+                                    limpiada[i] = false; // Y la posición de i 
+                                    // en el array limpiada será false 
                                 }
 
                             }
+                            // Craré un for para que me muestre las habitaciones 
+                            // que ha limpiado hasta que i sea mayor a TOTALDEPENDEN
                             for (int i = 0; i < TOTALDEPENDEN; i++) {
                                 if (limpiada[i] == true) {
+                                    // Mostrará las dependencias limpiadas una por una
                                     JOptionPane.showMessageDialog(null, "Se han "
                                             + "limpiado las dependencias: " + dependencia[i]);
-                                }else{
-                                JOptionPane.showMessageDialog(null, "No se han "
+                                } else { // Mostrará las dependencias no limpiadas
+                                    JOptionPane.showMessageDialog(null, "No se han "
                                             + "limpiado las dependencias: " + dependencia[i]);
                                 }
                             }
