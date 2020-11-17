@@ -461,6 +461,15 @@ public class Aspiradora {
                         }
 
                     } while (modFreg != 3); // Repite hasta que el usuario escriba un 3
+                case 3: // Muestra el estado general
+                    
+                    break;
+                case 4: // Base de carga
+                    
+                    break;
+                case 5: // Finaliza el programa
+                    
+                    break;
             }
         }
     }
