@@ -19,7 +19,7 @@ public class Aspiradora {
         // Variables de las dependencias
         String metcoc, metsal, metban, methab1, methab2;
         // Variable de dependencias totales y de minima carga
-        final int TOTALDEPENDEN = 4, MINCARGA = 3;
+        final int TOTALDEPENDEN = 5, MINCARGA = 3;
         // Variables necesarias
         String porcentajeCarga, aspiracion, limpiar, fregar, dependenciaLimpiada = "",
                 fregado = "", menu = "";
@@ -37,7 +37,7 @@ public class Aspiradora {
                 HAB1 = "habitación 1", HAB2 = "habitación 2";
 
         // Variables para los arrays
-        int numDepen = 5;
+        
 
         String numeroDepen = "", textoMetros = "";
 
@@ -53,11 +53,17 @@ public class Aspiradora {
             numDepen = Integer.parseInt(numeroDepen);
 
         } while (numDepen < 0 || numDepen > 10); // Valor entre 1 y 10
-        // Variable de nombre con array
          */
+        
+        // ARRAYS
+        // Nombre de las dependencias
         String[] dependencia = {"cocina", "salon", "banio", "habitación 1", "habitacion 2"};
 
-        int[] metros = new int[numDepen]; // METROS
+        // Metros de las dependecias
+        int[] metros = new int[TOTALDEPENDEN]; 
+        
+        // Boolean para saber si están limpiadas las habitaciones
+        boolean[] limpiada = new boolean [TOTALDEPENDEN];
 
         // Número de dependencias de la casa
         /*
@@ -67,7 +73,7 @@ public class Aspiradora {
         }
          */
         // Array para los metros cuadrados de las dependencias
-        for (int i = 0; i < numDepen; i++) {
+        for (int i = 0; i < TOTALDEPENDEN; i++) {
             do {
 
                 textoMetros = JOptionPane.showInputDialog("Introduzca los metros "
@@ -124,17 +130,18 @@ public class Aspiradora {
                             + "2 - Modo Dependencias \n");
                     modAspi = Integer.parseInt(aspiracion);
 
-                    switch (modAspi) {
+                    switch (modAspi) { // Modo aspiración
                         case 1: // Modo Completo de limpiar
                             JOptionPane.showMessageDialog(null, "Usted ha elegido el modo completo");
                             for (int i = 0; i < TOTALDEPENDEN; i++) {
-                                /*if (carga < MINCARGA) {
-                        JOptionPane.showConfirmDialog(null, "Aspiradora regrensando a su base...");
-                        break;
-                    } else {*/
-                                JOptionPane.showMessageDialog(null, "Limpiando...");
+                                if(carga > (metros[i] + MINCARGA)) {
+                                   
+                                }
+                                        
+                                        
+                                        
                                 carga -= RESTACARGALIMP;
-                                //}
+                                
                             }
                             break;
                         case 2: // Modo Dependencias de limpiar
