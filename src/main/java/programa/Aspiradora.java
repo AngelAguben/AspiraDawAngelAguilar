@@ -27,8 +27,8 @@ public class Aspiradora {
         double carga = 0;
         // Variables de las necesarias en numero
         int menuNum = 0, modAspi = 0, limp = 0, modFreg = 0, freg = 0;
-        // Variables de resta carga
-        final double RESTACARGALIMP = 1.5, RESTACARGAFREG = 2.25; // carga por m2
+        // Variables de resta carga por m2 y variable max de carga
+        final double RESTACARGALIMP = 1.5, RESTACARGAFREG = 2.25, MAXCARGA = 100;
         // Variables de calculo
         boolean tieneCarga = true;
 
@@ -465,10 +465,13 @@ public class Aspiradora {
 
                         break;
                     case 4: // Base de carga
-
+                        JOptionPane.showMessageDialog(null, "Aspiradora llegando a su base de carga...");
+                        JOptionPane.showMessageDialog(null, "Aspiradora entrando en modo de carga...");
+                        carga = MAXCARGA;
+                        JOptionPane.showMessageDialog(null, "Robot cargado al " + carga + "%");
                         break;
                     case 5: // Finaliza el programa
-
+                        
                         break;
                 }
             }
