@@ -471,7 +471,7 @@ public class Aspiradora {
                         JOptionPane.showMessageDialog(null, "Robot cargado al " + carga + "%");
                         break;
                     case 5: // Finaliza el programa
-                        
+                        JOptionPane.showMessageDialog(null, "Usted ha salido del programa");
                         break;
                 }
             }
