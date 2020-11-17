@@ -467,7 +467,9 @@ public class Aspiradora {
                     case 4: // Base de carga
                         JOptionPane.showMessageDialog(null, "Aspiradora llegando a su base de carga...");
                         JOptionPane.showMessageDialog(null, "Aspiradora entrando en modo de carga...");
-                        carga = MAXCARGA;
+                        // El valor que haya en la variable carga lo sustituye 
+                        // por un 100
+                        carga = MAXCARGA; 
                         JOptionPane.showMessageDialog(null, "Robot cargado al " + carga + "%");
                         break;
                     case 5: // Finaliza el programa
