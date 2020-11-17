@@ -37,8 +37,6 @@ public class Aspiradora {
                 HAB1 = "habitación 1", HAB2 = "habitación 2";
 
         // Variables para los arrays
-        
-
         String numeroDepen = "", textoMetros = "";
 
 
@@ -54,16 +52,15 @@ public class Aspiradora {
 
         } while (numDepen < 0 || numDepen > 10); // Valor entre 1 y 10
          */
-        
         // ARRAYS
         // Nombre de las dependencias
         String[] dependencia = {"cocina", "salon", "banio", "habitación 1", "habitacion 2"};
 
         // Metros de las dependecias
-        int[] metros = new int[TOTALDEPENDEN]; 
-        
+        int[] metros = new int[TOTALDEPENDEN];
+
         // Boolean para saber si están limpiadas las habitaciones
-        boolean[] limpiada = new boolean [TOTALDEPENDEN];
+        boolean[] limpiada = new boolean[TOTALDEPENDEN];
 
         // Número de dependencias de la casa
         /*
@@ -132,17 +129,33 @@ public class Aspiradora {
 
                     switch (modAspi) { // Modo aspiración
                         case 1: // Modo Completo de limpiar
-                            JOptionPane.showMessageDialog(null, "Usted ha elegido el modo completo");
+                            JOptionPane.showMessageDialog(null, "Usted ha elegido el modo completo \n"
+                                    + "Batería = " + carga + " \n");
+
                             for (int i = 0; i < TOTALDEPENDEN; i++) {
-                                if(carga > (metros[i] + MINCARGA)) {
-                                   
+                                if (carga > (metros[i] + MINCARGA)) {
+                                    JOptionPane.showMessageDialog(null, "Limpiando "
+                                            + "la dependencia " + dependencia[i] + " ...");
+                                    limpiada[i] = true;
+                                    carga -= metros[i] * RESTACARGALIMP;
+                                    System.out.println(carga);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Falta de "
+                                            + "batería para la dependencia " + dependencia[i]);
+                                    limpiada[i] = false;
                                 }
-                                        
-                                        
-                                        
-                                carga -= RESTACARGALIMP;
-                                
+
                             }
+                            for (int i = 0; i < TOTALDEPENDEN; i++) {
+                                if (limpiada[i] == true) {
+                                    JOptionPane.showMessageDialog(null, "Se han "
+                                            + "limpiado las dependencias: " + dependencia[i]);
+                                }else{
+                                JOptionPane.showMessageDialog(null, "No se han "
+                                            + "limpiado las dependencias: " + dependencia[i]);
+                                }
+                            }
+
                             break;
                         case 2: // Modo Dependencias de limpiar
                             JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
