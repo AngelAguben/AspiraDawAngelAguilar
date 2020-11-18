@@ -291,7 +291,7 @@ public class Aspiradora {
                                                 break;
                                             case 6: // Salir
                                                 JOptionPane.showMessageDialog(null, "Usted ha "
-                                                        + "salido del programa");
+                                                        + "salido del modo dependencias de aspiración");
                                                 break;
                                         }
                                         if (limp != 6 && tieneCarga == true) {
@@ -301,6 +301,12 @@ public class Aspiradora {
                                         }
                                         // Repite mientas limp no sea 6
                                     } while (limp != 6);
+                                case 3:
+                                    // Finaliza el menu de aspiración
+                                    JOptionPane.showMessageDialog(null, "Usted ha "
+                                            + "salido del menu de aspiración");
+                                    break;
+
                             }
                         } while (modAspi != 3); // Repite hasta que el usuario escriba un 3
                     }
@@ -487,6 +493,10 @@ public class Aspiradora {
                                         }
                                         // Repite mientas limp no sea 6
                                     } while (freg != 6);
+                                case 3: // Finaliza el menu de aspiración y fregado
+                                    JOptionPane.showMessageDialog(null, "Usted ha "
+                                            + "salido del menu de aspiración y fregado");
+                                    break;
                             }
                         } while (modFreg != 3); // Repite hasta que el usuario escriba un 3
                     }
