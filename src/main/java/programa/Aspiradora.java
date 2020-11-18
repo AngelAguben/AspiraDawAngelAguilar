@@ -6,6 +6,12 @@
 // api java time (8) para la hora
 package programa;
 
+// Imoportaciones necesarias para la fecha
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+// Importación necesaria para las funciones de texto de JOptionPane
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +50,10 @@ public class Aspiradora {
 
         // Boolean para saber si están limpiadas las habitaciones
         boolean[] limpiada = new boolean[TOTALDEPENDEN];
+
+        // Variables para mostrar la hora y fecha en el programa
+        Date fecha = new Date();
+        DateFormat FormatoFecha = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
         /* CONFIGURAR EL SISTEMA
         La vivienda tiene 1 cocina, 1 salón, 1 cuarto de baño y 2 dormitorios
@@ -114,7 +124,6 @@ public class Aspiradora {
                 JOptionPane.showMessageDialog(null, "Falta de batría \n"
                         + "Aspiradora regrensando a su base... ");
             } else { // Si no ejecutará el siguiente código
-
                 switch (menuNum) {
                     case 1: // Aspiración
                         do {
@@ -452,16 +461,16 @@ public class Aspiradora {
 
                         } while (modFreg != 3); // Repite hasta que el usuario escriba un 3
                     case 3: // Muestra el estado general
-                        JOptionPane.showMessageDialog(null, "Fecha: \n"
+                        JOptionPane.showMessageDialog(null, "Fecha y hora: "
+                                + FormatoFecha.format(fecha) + "\n"
                                 + "Nivel de batería: " + carga + "%\n"
-                                + "Lugar donde está parado " + "\n"
+                                + "Lugar donde está parada: " + "\n"
                                 + "Dependencias y metros de la casa: \n"
                                 + " 1 - " + dependencia[0] + " - " + metros[0] + " metros cuadrados \n"
                                 + " 2 - " + dependencia[1] + " - " + metros[1] + " metros cuadrados \n"
                                 + " 3 - " + dependencia[2] + " - " + metros[2] + " metros cuadrados \n"
                                 + " 4 - " + dependencia[3] + " - " + metros[3] + " metros cuadrados \n"
                                 + " 5 - " + dependencia[4] + " - " + metros[4] + " metros cuadrados");
-
                         break;
                     case 4: // Base de carga
                         JOptionPane.showMessageDialog(null, "Aspiradora llegando a su base de carga...");
