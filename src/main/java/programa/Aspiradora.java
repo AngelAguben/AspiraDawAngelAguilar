@@ -55,6 +55,9 @@ public class Aspiradora {
         Date fecha = new Date();
         DateFormat FormatoFecha = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
+        // Variable para la posición
+        String posicion = "Base de carga";
+
         /* CONFIGURAR EL SISTEMA
         La vivienda tiene 1 cocina, 1 salón, 1 cuarto de baño y 2 dormitorios
         De cada depedencia, el sistema pregunta el número de metros de cada 
@@ -149,8 +152,8 @@ public class Aspiradora {
                                             // Mostrará el siguiente mensaje 
                                             JOptionPane.showMessageDialog(null, "Limpiando "
                                                     + "la dependencia " + dependencia[i] + " ...");
-                                            limpiada[i] = true; // Posición de i en el 
-                                            // array limpiada será true
+                                            // Posición de i en el array limpiada será true
+                                            limpiada[i] = true;
 
                                             // Actualizará la variable de carga al valor 
                                             // adecuado, multiplicando los metros de la 
@@ -166,6 +169,8 @@ public class Aspiradora {
                                             limpiada[i] = false; // Y la posición de i 
                                             // en el array limpiada será false 
                                         }
+                                        // Posición de la aspiradora será i
+                                        posicion = dependencia[i];
                                     }
                                     // Crearé un for para que me muestre las habitaciones 
                                     // que ha limpiado hasta que i sea mayor a TOTALDEPENDEN
@@ -217,6 +222,9 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false; // Variable de tieneCarga es false
                                                 }
+                                                // Posición de la aspiradora será 0
+                                                // o la posición que le pongamos
+                                                posicion = dependencia[0];
                                                 break;
                                             case 2: // Salón
                                                 if (carga > (metros[1] + MINCARGA)) {
@@ -233,6 +241,7 @@ public class Aspiradora {
                                                     // Y la variable tieneCarga será false
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[1];
                                                 break;
                                             case 3: // Banio
                                                 if (carga > (metros[2] + MINCARGA)) {
@@ -247,6 +256,7 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[2];
                                                 break;
                                             case 4: // Habitación 1
                                                 if (carga > (metros[3] + MINCARGA)) {
@@ -261,6 +271,7 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[3];
                                                 break;
                                             case 5: // Habitación 2
                                                 if (carga > (metros[4] + MINCARGA)) {
@@ -275,6 +286,7 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[4];
                                                 break;
                                             case 6: // Salir
                                                 JOptionPane.showMessageDialog(null, "Usted ha "
@@ -291,7 +303,6 @@ public class Aspiradora {
                             }
                         } while (modAspi != 3); // Repite hasta que el usuario escriba un 3
                         break;
-
                     case 2: // Aspiración y fregado
                         do {
                             // Implementamos el array de texto para 
@@ -315,8 +326,8 @@ public class Aspiradora {
                                             // Mostrará el siguiente mensaje 
                                             JOptionPane.showMessageDialog(null, "Limpiando "
                                                     + "la dependencia " + dependencia[i] + " ...");
-                                            limpiada[i] = true; // Posición de i en el 
-                                            // array limpiada será true
+                                            // Posición de i en el array limpiada será true
+                                            limpiada[i] = true;
 
                                             // Actualizará la variable de carga al valor 
                                             // adecuado, multiplicando los metros de la 
@@ -332,6 +343,9 @@ public class Aspiradora {
                                             limpiada[i] = false; // Y la posición de i 
                                             // en el array limpiada será false 
                                         }
+                                        // Posición de la aspiradora será 
+                                        // el valor de i
+                                        posicion = dependencia[i];
                                     }
                                     // Crearé un for para que me muestre las habitaciones 
                                     // que ha limpiado hasta que i sea mayor a TOTALDEPENDEN
@@ -346,7 +360,6 @@ public class Aspiradora {
                                         }
                                     }
                                     break;
-
                                 case 2: // Modo Dependencias de fregado
                                     JOptionPane.showMessageDialog(null, "Usted ha eleigo el modo "
                                             + "dependencias");
@@ -388,6 +401,9 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false; // Variable de tieneCarga es false
                                                 }
+                                                // Posición de la aspiradora será 0
+                                                // o la posición que le pongamos
+                                                posicion = dependencia[0];
                                                 break;
                                             case 2: // Salón
                                                 if (carga > ((metros[1] * RESTACARGAFREG) + MINCARGA)) {
@@ -402,6 +418,7 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[1];
                                                 break;
                                             case 3: // Banio
                                                 if (carga > ((metros[2] * RESTACARGAFREG) + MINCARGA)) {
@@ -416,6 +433,7 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[2];
                                                 break;
                                             case 4: // Habitación 1
                                                 if (carga > ((metros[3] * RESTACARGAFREG) + MINCARGA)) {
@@ -430,6 +448,7 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[3];
                                                 break;
                                             case 5: // Habitación 2
                                                 if (carga > ((metros[4] * RESTACARGAFREG) + MINCARGA)) {
@@ -444,6 +463,7 @@ public class Aspiradora {
                                                             + "no es suficiente");
                                                     tieneCarga = false;
                                                 }
+                                                posicion = dependencia[4];
                                                 break;
                                             case 6: // Salir
                                                 JOptionPane.showMessageDialog(null, "Usted ha "
@@ -458,13 +478,12 @@ public class Aspiradora {
                                         // Repite mientas limp no sea 6
                                     } while (freg != 6);
                             }
-
                         } while (modFreg != 3); // Repite hasta que el usuario escriba un 3
                     case 3: // Muestra el estado general
                         JOptionPane.showMessageDialog(null, "Fecha y hora: "
                                 + FormatoFecha.format(fecha) + "\n"
                                 + "Nivel de batería: " + carga + "%\n"
-                                + "Lugar donde está parada: " + "\n"
+                                + "Lugar donde está parada: " + posicion + "\n"
                                 + "Dependencias y metros de la casa: \n"
                                 + " 1 - " + dependencia[0] + " - " + metros[0] + " metros cuadrados \n"
                                 + " 2 - " + dependencia[1] + " - " + metros[1] + " metros cuadrados \n"
@@ -479,6 +498,7 @@ public class Aspiradora {
                         // por un 100
                         carga = MAXCARGA;
                         JOptionPane.showMessageDialog(null, "Robot cargado al " + carga + "%");
+                        posicion = "Base de carga";
                         break;
                     case 5: // Finaliza el programa
                         JOptionPane.showMessageDialog(null, "Usted ha salido del programa");
