@@ -87,7 +87,6 @@ public class Aspiradora {
         do {
             porcentajeCarga = JOptionPane.showInputDialog("Carga de la aspiradora (0-100) ");
             carga = Integer.parseInt(porcentajeCarga);
-            carga=MAXCARGA;
             // Se repetirá si la carga es inferior a 0 ó superior a 100
         } while (carga < 0 || carga > 100);
 
@@ -129,6 +128,7 @@ public class Aspiradora {
                         // Mostrará este mensaje y terminará el programa
                         JOptionPane.showMessageDialog(null, "Falta de batería \n"
                                 + "Aspiradora regrensando a su base... ");
+                         carga=MAXCARGA;
                     } else { // Si no ejecutará el siguiente código
                         do {
                             // El usuario eligirá el modo de aspiracioón
@@ -311,6 +311,7 @@ public class Aspiradora {
                         // Mostrará este mensaje y terminará el programa
                         JOptionPane.showMessageDialog(null, "Falta de batería \n"
                                 + "Aspiradora regrensando a su base... ");
+                         carga=MAXCARGA;
                     } else { // Si no ejecutará el siguiente código
                         do {
                             // Implementamos el array de texto para 
