@@ -15,7 +15,10 @@ import javax.swing.JOptionPane;
 public class Aspiradora {
 
     public static void main(String[] args) {
-        // Variables
+        // VARIABLES
+        // Varibales de autenticación del usuario
+        final String USUARIO = "admin", PASSWORD = "admin";
+        String user = "", passwd = "";
         // Variable de dependencias totales y de minima y máxima carga
         final int TOTALDEPENDEN = 5, MINCARGA = 3, MAXCARGA = 100;
         // Variables necesarias para la ejecución del programa de tipo texto
@@ -30,15 +33,14 @@ public class Aspiradora {
         // Variables boolean 
         boolean tieneCarga = true;
 
-        // Variables para los arrays
-        String textoMetros = "";
-
         // ARRAYS
         // Array para el nombre de las dependencias
         String[] dependencia = {"cocina", "salon", "banio", "habitación 1", "habitacion 2"};
 
         // Array para los metros cuadrados de las dependencias
         int[] metros = new int[TOTALDEPENDEN];
+        // Variables para los arrays
+        String textoMetros = "";
 
         // Boolean para saber si están limpiadas las habitaciones
         boolean[] limpiada = new boolean[TOTALDEPENDEN];
@@ -49,6 +51,14 @@ public class Aspiradora {
          */
         // RESOLUCIÓN DEL PROGRAMA
         // Introduzción de datos
+        // Autenticación del usuario
+        do {
+            user = JOptionPane.showInputDialog("Introduzca el usuario");
+            passwd = JOptionPane.showInputDialog("Introduzca la contraseña");
+            // Si el usuario no introduce el usuario y la contraseña correctamente
+            // no seguirá el programa
+        } while (!USUARIO.equalsIgnoreCase(user) || !PASSWORD.equalsIgnoreCase(passwd));
+
         // Se ejecuitará mientras i sea menor que las dependencias totales
         for (int i = 0; i < TOTALDEPENDEN; i++) {
             do {
