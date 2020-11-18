@@ -35,7 +35,7 @@ public class Aspiradora {
         // Variables necesarias de tipo número
         int menuNum = 0, modAspi = 0, limp = 0, modFreg = 0, freg = 0;
         // Variables de resta carga por m2 de limpieza y aspiración y fregado
-        final double RESTACARGALIMP = 1.5, RESTACARGAFREG = 2.25;
+        final double RESTACARGAASPI = 1.5, RESTACARGAFREG = 2.25;
         // Variables boolean 
         boolean tieneCarga = true;
 
@@ -87,6 +87,7 @@ public class Aspiradora {
         do {
             porcentajeCarga = JOptionPane.showInputDialog("Carga de la aspiradora (0-100) ");
             carga = Integer.parseInt(porcentajeCarga);
+            carga=MAXCARGA;
             // Se repetirá si la carga es inferior a 0 ó superior a 100
         } while (carga < 0 || carga > 100);
 
@@ -112,7 +113,7 @@ public class Aspiradora {
         // Implementamos el array de texto para 
         // que el usuario elija un modo
         do {
-            menu = JOptionPane.showInputDialog("Elija un modo de fregado: \n"
+            menu = JOptionPane.showInputDialog("Elija una opción: \n"
                     + "1 - Aspiración \n"
                     + "2 - Aspiración y fregado \n"
                     + "3 - Estado general\n"
@@ -121,23 +122,23 @@ public class Aspiradora {
             // Pasará el texto de munu a int de menuNum
             menuNum = Integer.parseInt(menu);
 
-            // Si carga es menor a MINCARGA
-            if (carga < MINCARGA) {
-                // Mostrará este mensaje y terminará el programa
-                JOptionPane.showMessageDialog(null, "Falta de batría \n"
-                        + "Aspiradora regrensando a su base... ");
-            } else { // Si no ejecutará el siguiente código
-                switch (menuNum) {
-                    case 1: // Aspiración
+            switch (menuNum) {
+                case 1: // Aspiración
+                    // Si carga es menor a MINCARGA
+                    if (carga < MINCARGA) {
+                        // Mostrará este mensaje y terminará el programa
+                        JOptionPane.showMessageDialog(null, "Falta de batería \n"
+                                + "Aspiradora regrensando a su base... ");
+                    } else { // Si no ejecutará el siguiente código
                         do {
                             // El usuario eligirá el modo de aspiracioón
                             aspiracion = JOptionPane.showInputDialog("Elija un modo de aspiración: \n"
+                                    + "Batería = " + carga + " \n"
                                     + "1 - Modo Completo \n"
                                     + "2 - Modo Dependencias \n"
                                     + "3 - Salir \n");
                             // Pasará el texto de aspiración a int de modAspi
                             modAspi = Integer.parseInt(aspiracion);
-
                             switch (modAspi) { // Modo aspiración
                                 case 1: // Modo Completo de limpiar
                                     JOptionPane.showMessageDialog(null, "Usted ha elegido el modo completo \n"
@@ -148,7 +149,7 @@ public class Aspiradora {
                                         // Si carga es mayor a la posición del array i 
                                         // en metros más la craga mínima que es 3, 
                                         // ejecutará el código de if
-                                        if (carga > (metros[i] + MINCARGA)) {
+                                        if (carga > (metros[i] * RESTACARGAASPI) + MINCARGA) {
                                             // Mostrará el siguiente mensaje 
                                             JOptionPane.showMessageDialog(null, "Limpiando "
                                                     + "la dependencia " + dependencia[i] + " ...");
@@ -160,7 +161,7 @@ public class Aspiradora {
                                             // posición de i, multiplicandolo por lo que
                                             // consume cada metro de batería menos la 
                                             // carga de la variable que tenga carga
-                                            carga -= metros[i] * RESTACARGALIMP;
+                                            carga -= metros[i] * RESTACARGAASPI;
                                             // System.out.println(carga);
                                         } else {
                                             // De lo contrario, mostrará este mensaje
@@ -215,7 +216,7 @@ public class Aspiradora {
                                                     dependenciaLimpiada = dependencia[0];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
-                                                    carga -= RESTACARGALIMP * metros[0];
+                                                    carga -= RESTACARGAASPI * metros[0];
                                                 } else {
                                                     // Si no, mostrará este mensaje
                                                     JOptionPane.showMessageDialog(null, "La batería "
@@ -233,7 +234,7 @@ public class Aspiradora {
                                                     dependenciaLimpiada = dependencia[1];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
-                                                    carga -= RESTACARGALIMP * metros[1];
+                                                    carga -= RESTACARGAASPI * metros[1];
                                                 } else {
                                                     // Si no, mostrará este mensaje
                                                     JOptionPane.showMessageDialog(null, "La batería "
@@ -250,7 +251,7 @@ public class Aspiradora {
                                                     dependenciaLimpiada = dependencia[2];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
-                                                    carga -= RESTACARGALIMP * metros[2];
+                                                    carga -= RESTACARGAASPI * metros[2];
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "La batería "
                                                             + "no es suficiente");
@@ -265,7 +266,7 @@ public class Aspiradora {
                                                     dependenciaLimpiada = dependencia[3];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
-                                                    carga -= RESTACARGALIMP * metros[3];
+                                                    carga -= RESTACARGAASPI * metros[3];
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "La batería "
                                                             + "no es suficiente");
@@ -280,7 +281,7 @@ public class Aspiradora {
                                                     dependenciaLimpiada = dependencia[4];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
-                                                    carga -= RESTACARGALIMP * metros[4];
+                                                    carga -= RESTACARGAASPI * metros[4];
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "La batería "
                                                             + "no es suficiente");
@@ -302,12 +303,20 @@ public class Aspiradora {
                                     } while (limp != 6);
                             }
                         } while (modAspi != 3); // Repite hasta que el usuario escriba un 3
-                        break;
-                    case 2: // Aspiración y fregado
+                    }
+                    break;
+                case 2: // Aspiración y fregado
+                    // Si carga es menor a MINCARGA
+                    if (carga < MINCARGA) {
+                        // Mostrará este mensaje y terminará el programa
+                        JOptionPane.showMessageDialog(null, "Falta de batería \n"
+                                + "Aspiradora regrensando a su base... ");
+                    } else { // Si no ejecutará el siguiente código
                         do {
                             // Implementamos el array de texto para 
                             // que el usuario elija un modo
                             fregado = JOptionPane.showInputDialog("Elija un modo de fregado: \n"
+                                    + "Batería = " + carga + " \n"
                                     + "1 - Modo Completo \n"
                                     + "2 - Modo Dependencias \n"
                                     + "3 - Salir \n");
@@ -322,7 +331,7 @@ public class Aspiradora {
                                         // Si carga es mayor a la posición del array i 
                                         // en metros más la craga mínima que es 3, 
                                         // ejecutará el código de if
-                                        if (carga > (metros[i] + MINCARGA)) {
+                                        if (carga > (metros[i] * RESTACARGAFREG) + MINCARGA) {
                                             // Mostrará el siguiente mensaje 
                                             JOptionPane.showMessageDialog(null, "Limpiando "
                                                     + "la dependencia " + dependencia[i] + " ...");
@@ -479,32 +488,34 @@ public class Aspiradora {
                                     } while (freg != 6);
                             }
                         } while (modFreg != 3); // Repite hasta que el usuario escriba un 3
-                    case 3: // Muestra el estado general
-                        JOptionPane.showMessageDialog(null, "Fecha y hora: "
-                                + FormatoFecha.format(fecha) + "\n"
-                                + "Nivel de batería: " + carga + "%\n"
-                                + "Lugar donde está parada: " + posicion + "\n"
-                                + "Dependencias y metros de la casa: \n"
-                                + " 1 - " + dependencia[0] + " - " + metros[0] + " metros cuadrados \n"
-                                + " 2 - " + dependencia[1] + " - " + metros[1] + " metros cuadrados \n"
-                                + " 3 - " + dependencia[2] + " - " + metros[2] + " metros cuadrados \n"
-                                + " 4 - " + dependencia[3] + " - " + metros[3] + " metros cuadrados \n"
-                                + " 5 - " + dependencia[4] + " - " + metros[4] + " metros cuadrados");
-                        break;
-                    case 4: // Base de carga
-                        JOptionPane.showMessageDialog(null, "Aspiradora llegando a su base de carga...");
-                        JOptionPane.showMessageDialog(null, "Aspiradora entrando en modo de carga...");
-                        // El valor que haya en la variable carga lo sustituye 
-                        // por un 100
-                        carga = MAXCARGA;
-                        JOptionPane.showMessageDialog(null, "Robot cargado al " + carga + "%");
-                        posicion = "Base de carga";
-                        break;
-                    case 5: // Finaliza el programa
-                        JOptionPane.showMessageDialog(null, "Usted ha salido del programa");
-                        break;
-                }
+                    }
+                    break;
+                case 3: // Muestra el estado general
+                    JOptionPane.showMessageDialog(null, "Fecha y hora: "
+                            + FormatoFecha.format(fecha) + "\n"
+                            + "Nivel de batería: " + carga + "%\n"
+                            + "Lugar donde está parada: " + posicion + "\n"
+                            + "Dependencias y metros de la casa: \n"
+                            + " 1 - " + dependencia[0] + " - " + metros[0] + " metros cuadrados \n"
+                            + " 2 - " + dependencia[1] + " - " + metros[1] + " metros cuadrados \n"
+                            + " 3 - " + dependencia[2] + " - " + metros[2] + " metros cuadrados \n"
+                            + " 4 - " + dependencia[3] + " - " + metros[3] + " metros cuadrados \n"
+                            + " 5 - " + dependencia[4] + " - " + metros[4] + " metros cuadrados");
+                    break;
+                case 4: // Base de carga
+                    JOptionPane.showMessageDialog(null, "Aspiradora llegando a su base de carga...");
+                    JOptionPane.showMessageDialog(null, "Aspiradora entrando en modo de carga...");
+                    // El valor que haya en la variable carga lo sustituye 
+                    // por un 100
+                    carga = MAXCARGA;
+                    JOptionPane.showMessageDialog(null, "Robot cargado al " + carga + "%");
+                    posicion = "Base de carga";
+                    break;
+                case 5: // Finaliza el programa
+                    JOptionPane.showMessageDialog(null, "Usted ha salido del programa");
+                    break;
             }
+
         } while (menuNum != 5);
     }
 }
