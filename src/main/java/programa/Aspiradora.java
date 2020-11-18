@@ -16,20 +16,19 @@ public class Aspiradora {
 
     public static void main(String[] args) {
         // Variables
-        // Variables de las dependencias
-        String metcoc, metsal, metban, methab1, methab2;
-        // Variable de dependencias totales y de minima carga
-        final int TOTALDEPENDEN = 5, MINCARGA = 3;
-        // Variables necesarias
+        // Variable de dependencias totales y de minima y máxima carga
+        final int TOTALDEPENDEN = 5, MINCARGA = 3, MAXCARGA = 100;
+        // Variables necesarias para la ejecución del programa de tipo texto
         String porcentajeCarga, aspiracion, limpiar, fregar, dependenciaLimpiada = "",
                 fregado = "", menu = "";
         // Variables de las dependencias en numero
+        // Variable de la carga
         double carga = 0;
-        // Variables de las necesarias en numero
+        // Variables necesarias de tipo número
         int menuNum = 0, modAspi = 0, limp = 0, modFreg = 0, freg = 0;
-        // Variables de resta carga por m2 y variable max de carga
-        final double RESTACARGALIMP = 1.5, RESTACARGAFREG = 2.25, MAXCARGA = 100;
-        // Variables de calculo
+        // Variables de resta carga por m2 de limpieza y aspiración y fregado
+        final double RESTACARGALIMP = 1.5, RESTACARGAFREG = 2.25;
+        // Variables boolean 
         boolean tieneCarga = true;
 
         // Variables de nombre
@@ -37,46 +36,31 @@ public class Aspiradora {
                 HAB1 = "habitación 1", HAB2 = "habitación 2";
 
         // Variables para los arrays
-        String numeroDepen = "", textoMetros = "";
+        String textoMetros = "";
 
-
-        /* CONFIGURAR EL SISTEMA
-        La vivienda tiene 1 cocina, 1 salón, 1 cuarto de baño y 2 dormitorios
-        De cada depedencia, el sistema pregunta el número de metros de cada 
-         */
-        // RESOLUCIÓN EL PROGRAMA
-        // Introduzción de datos
-        /*do {
-            numeroDepen = JOptionPane.showInputDialog("¿Cuántas dependencias tiene?");
-            numDepen = Integer.parseInt(numeroDepen);
-
-        } while (numDepen < 0 || numDepen > 10); // Valor entre 1 y 10
-         */
         // ARRAYS
-        // Nombre de las dependencias
+        // Array para el nombre de las dependencias
         String[] dependencia = {"cocina", "salon", "banio", "habitación 1", "habitacion 2"};
 
-        // Metros de las dependecias
+        // Array para los metros cuadrados de las dependencias
         int[] metros = new int[TOTALDEPENDEN];
 
         // Boolean para saber si están limpiadas las habitaciones
         boolean[] limpiada = new boolean[TOTALDEPENDEN];
 
-        // Número de dependencias de la casa
-        /*
-        for (int i = 0; i < numDepen; i++) {
-            dependencia[i] = JOptionPane.showInputDialog("Introduzca el nombre de la "
-                    + "dependencia " + (i + 1));
-        }
+        /* CONFIGURAR EL SISTEMA
+        La vivienda tiene 1 cocina, 1 salón, 1 cuarto de baño y 2 dormitorios
+        De cada depedencia, el sistema pregunta el número de metros de cada 
          */
-        // Array para los metros cuadrados de las dependencias
+        // RESOLUCIÓN DEL PROGRAMA
+        // Introduzción de datos
+        // Se ejecuitará mientras i sea menor que las dependencias totales
         for (int i = 0; i < TOTALDEPENDEN; i++) {
             do {
-
                 textoMetros = JOptionPane.showInputDialog("Introduzca los metros "
                         + "cuadrados de la dependencia " + dependencia[i]);
                 metros[i] = Integer.parseInt(textoMetros);
-
+                // Se repetirá si el usuario pone un valor inferior a 0 ó superior a 100
             } while (metros[i] < 0 && metros[i] > 100);
         }
 
@@ -85,6 +69,7 @@ public class Aspiradora {
         do {
             porcentajeCarga = JOptionPane.showInputDialog("Carga de la aspiradora (0-100) ");
             carga = Integer.parseInt(porcentajeCarga);
+            // Se repetirá si la carga es inferior a 0 ó superior a 100
         } while (carga < 0 || carga > 100);
 
 
@@ -463,14 +448,14 @@ public class Aspiradora {
                         } while (modFreg != 3); // Repite hasta que el usuario escriba un 3
                     case 3: // Muestra el estado general
                         JOptionPane.showMessageDialog(null, "Fecha: \n"
-                        + "Nivel de batería: " + carga + "%\n"
-                        + "Lugar donde está parado " + "\n"
-                        + "Dependencias y metros de la casa: \n"
-                        + " 1 - " + dependencia[0] + " - " + metros[0] + " metros cuadrados \n"
-                        + " 2 - " + dependencia[1] + " - " + metros[1] + " metros cuadrados \n"
-                        + " 3 - " + dependencia[2] + " - " + metros[2] + " metros cuadrados \n"
-                        + " 4 - " + dependencia[3] + " - " + metros[3] + " metros cuadrados \n"
-                        + " 5 - " + dependencia[4] + " - " + metros[4] + " metros cuadrados");
+                                + "Nivel de batería: " + carga + "%\n"
+                                + "Lugar donde está parado " + "\n"
+                                + "Dependencias y metros de la casa: \n"
+                                + " 1 - " + dependencia[0] + " - " + metros[0] + " metros cuadrados \n"
+                                + " 2 - " + dependencia[1] + " - " + metros[1] + " metros cuadrados \n"
+                                + " 3 - " + dependencia[2] + " - " + metros[2] + " metros cuadrados \n"
+                                + " 4 - " + dependencia[3] + " - " + metros[3] + " metros cuadrados \n"
+                                + " 5 - " + dependencia[4] + " - " + metros[4] + " metros cuadrados");
 
                         break;
                     case 4: // Base de carga
@@ -478,7 +463,7 @@ public class Aspiradora {
                         JOptionPane.showMessageDialog(null, "Aspiradora entrando en modo de carga...");
                         // El valor que haya en la variable carga lo sustituye 
                         // por un 100
-                        carga = MAXCARGA; 
+                        carga = MAXCARGA;
                         JOptionPane.showMessageDialog(null, "Robot cargado al " + carga + "%");
                         break;
                     case 5: // Finaliza el programa
