@@ -128,7 +128,7 @@ public class Aspiradora {
                         // Mostrará este mensaje y terminará el programa
                         JOptionPane.showMessageDialog(null, "Falta de batería \n"
                                 + "Aspiradora regrensando a su base... ");
-                         carga=MAXCARGA;
+                        carga = MAXCARGA;
                     } else { // Si no ejecutará el siguiente código
                         do {
                             // El usuario eligirá el modo de aspiracioón
@@ -311,7 +311,7 @@ public class Aspiradora {
                         // Mostrará este mensaje y terminará el programa
                         JOptionPane.showMessageDialog(null, "Falta de batería \n"
                                 + "Aspiradora regrensando a su base... ");
-                         carga=MAXCARGA;
+                        carga = MAXCARGA;
                     } else { // Si no ejecutará el siguiente código
                         do {
                             // Implementamos el array de texto para 
