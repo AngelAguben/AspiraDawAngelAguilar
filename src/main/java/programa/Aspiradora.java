@@ -21,7 +21,6 @@ public class Aspiradora {
         // Variables necesarias para la ejecución del programa de tipo texto
         String porcentajeCarga, aspiracion, limpiar, fregar, dependenciaLimpiada = "",
                 fregado = "", menu = "";
-        // Variables de las dependencias en numero
         // Variable de la carga
         double carga = 0;
         // Variables necesarias de tipo número
@@ -30,10 +29,6 @@ public class Aspiradora {
         final double RESTACARGALIMP = 1.5, RESTACARGAFREG = 2.25;
         // Variables boolean 
         boolean tieneCarga = true;
-
-        // Variables de nombre
-        final String COCINA = "cocina", SALON = "salón", BANIO = "banio",
-                HAB1 = "habitación 1", HAB2 = "habitación 2";
 
         // Variables para los arrays
         String textoMetros = "";
@@ -193,7 +188,7 @@ public class Aspiradora {
                                                 if (carga > (metros[0] + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de COCINA
-                                                    dependenciaLimpiada = COCINA;
+                                                    dependenciaLimpiada = dependencia[0];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGALIMP * metros[0];
@@ -208,7 +203,7 @@ public class Aspiradora {
                                                 if (carga > (metros[1] + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de SALON
-                                                    dependenciaLimpiada = SALON;
+                                                    dependenciaLimpiada = dependencia[1];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGALIMP * metros[1];
@@ -224,7 +219,7 @@ public class Aspiradora {
                                                 if (carga > (metros[2] + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de BANIO
-                                                    dependenciaLimpiada = BANIO;
+                                                    dependenciaLimpiada = dependencia[2];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGALIMP * metros[2];
@@ -238,7 +233,7 @@ public class Aspiradora {
                                                 if (carga > (metros[3] + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de HAB1
-                                                    dependenciaLimpiada = HAB1;
+                                                    dependenciaLimpiada = dependencia[3];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGALIMP * metros[3];
@@ -252,7 +247,7 @@ public class Aspiradora {
                                                 if (carga > (metros[4] + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de HAB2
-                                                    dependenciaLimpiada = HAB2;
+                                                    dependenciaLimpiada = dependencia[4];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGALIMP * metros[4];
@@ -364,7 +359,7 @@ public class Aspiradora {
                                                 if (carga > ((metros[0] * RESTACARGAFREG) + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de COCINA
-                                                    dependenciaLimpiada = COCINA;
+                                                    dependenciaLimpiada = dependencia[0];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGAFREG * metros[0];
@@ -379,7 +374,7 @@ public class Aspiradora {
                                                 if (carga > ((metros[1] * RESTACARGAFREG) + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de SALON
-                                                    dependenciaLimpiada = SALON;
+                                                    dependenciaLimpiada = dependencia[1];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGAFREG * metros[1];
@@ -393,7 +388,7 @@ public class Aspiradora {
                                                 if (carga > ((metros[2] * RESTACARGAFREG) + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de BANIO
-                                                    dependenciaLimpiada = BANIO;
+                                                    dependenciaLimpiada = dependencia[2];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGAFREG * metros[2];
@@ -407,7 +402,7 @@ public class Aspiradora {
                                                 if (carga > ((metros[3] * RESTACARGAFREG) + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de HAB1
-                                                    dependenciaLimpiada = HAB1;
+                                                    dependenciaLimpiada = dependencia[3];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGAFREG * metros[3];
@@ -421,7 +416,7 @@ public class Aspiradora {
                                                 if (carga > ((metros[4] * RESTACARGAFREG) + MINCARGA)) {
                                                     // Se actualiza la variable de dependenciaLimpia con el 
                                                     // valor de HAB2
-                                                    dependenciaLimpiada = HAB2;
+                                                    dependenciaLimpiada = dependencia[4];
                                                     // Se actualiza la variable carga con el valor de lo 
                                                     // que tenia menos lo que se resta
                                                     carga -= RESTACARGAFREG * metros[4];
