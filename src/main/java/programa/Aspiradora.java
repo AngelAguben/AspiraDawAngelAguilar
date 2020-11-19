@@ -301,12 +301,12 @@ public class Aspiradora {
                                         }
                                         // Repite mientas limp no sea 6
                                     } while (limp != 6);
+                                    break;
                                 case 3:
                                     // Finaliza el menu de aspiración
                                     JOptionPane.showMessageDialog(null, "Usted ha "
                                             + "salido del menu de aspiración");
                                     break;
-
                             }
                         } while (modAspi != 3); // Repite hasta que el usuario escriba un 3
                     }
@@ -493,6 +493,7 @@ public class Aspiradora {
                                         }
                                         // Repite mientas limp no sea 6
                                     } while (freg != 6);
+                                    break;
                                 case 3: // Finaliza el menu de aspiración y fregado
                                     JOptionPane.showMessageDialog(null, "Usted ha "
                                             + "salido del menu de aspiración y fregado");
