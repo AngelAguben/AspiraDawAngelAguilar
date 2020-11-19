@@ -79,7 +79,7 @@ public class Aspiradora {
                         + "cuadrados de la dependencia " + dependencia[i]);
                 metros[i] = Integer.parseInt(textoMetros);
                 // Se repetirá si el usuario pone un valor inferior a 0 ó superior a 100
-            } while (metros[i] < 0 && metros[i] > 100);
+            } while (metros[i] < 0 || metros[i] > 100);
         }
 
         // CARGA
